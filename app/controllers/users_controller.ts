@@ -4,21 +4,21 @@ import type { HttpContext } from '@adonisjs/core/http'
 
 export default class UsersController {
 
-  public async index({ request, response }: HttpContext) {
+  public async index({  response }: HttpContext) {
     return response.status(200).json({ message: {
       status: 'succes',
       data: await User.all()
     }})
   }
 
-  public async show({ request, response }: HttpContext) {
+  public async show({ response }: HttpContext) {
     return response.status(200).json({ message: 'Hello World' })
   }
 
   public async store({ request, response }: HttpContext) {
 
     const { fullname, email, password,role } = request.all()
-    const payload = await request.validateUsing(createUserValidator)
+    await request.validateUsing(createUserValidator)
 
     const user = await User.findBy('email', email)
     if (user) {

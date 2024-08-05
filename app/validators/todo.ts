@@ -8,7 +8,8 @@ export const createTodoValidator = vine.compile(
   vine.object({
     title: vine.string(),
     post: vine.string(),
-    user_id: vine.number()
+    user_id: vine.number(),
+    avatar: vine.file()
   })
 )
 

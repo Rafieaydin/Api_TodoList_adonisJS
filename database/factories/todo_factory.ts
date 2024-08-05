@@ -6,7 +6,8 @@ export const TodoFactory = factory
     return {
       title: faker.lorem.words(3),
       post: faker.lorem.words(10),
-      user_id: 1
+      user_id: 1,
+      avatar: faker.image.imageUrl()
     }
   })
   .build()

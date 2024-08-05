@@ -17,6 +17,9 @@ export default class Todo extends BaseModel {
   @column()
   declare user_id: number
 
+  @column()
+  declare avatar: string
+
   @belongsTo(() => User,{
     foreignKey: 'user_id'
   }) // relasi 3:1 jadi hasmany : belongsto

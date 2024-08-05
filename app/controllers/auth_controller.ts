@@ -26,7 +26,7 @@ export default class AuthController {
     }})
   }
 
-  public async register({request, response, auth}:HttpContext){
+  public async register({request, response}:HttpContext){
     const {fullname,email, password, repeat_password,role} = request.all()
     const user = User.findBy('email', email)
     if (!user){
@@ -57,7 +57,7 @@ export default class AuthController {
     })
   }
 
-  public async logout({ request, response, auth }: HttpContext) {
+  public async logout({ response, auth }: HttpContext) {
     const user = await User.accessTokens.delete(auth.getUserOrFail(),(await auth.authenticate()).currentAccessToken.identifier)
     return response.status(200).json({ message: {
       status: 'success',
